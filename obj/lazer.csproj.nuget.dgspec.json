@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\oscar\\lazer\\lazer.csproj": {}
+    "C:\\Users\\oscar\\lazer\\lazer.csproj": {}
   },
   "projects": {
-    "c:\\Users\\oscar\\lazer\\lazer.csproj": {
+    "C:\\Users\\oscar\\lazer\\lazer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\oscar\\lazer\\lazer.csproj",
+        "projectUniqueName": "C:\\Users\\oscar\\lazer\\lazer.csproj",
         "projectName": "lazer",
-        "projectPath": "c:\\Users\\oscar\\lazer\\lazer.csproj",
+        "projectPath": "C:\\Users\\oscar\\lazer\\lazer.csproj",
         "packagesPath": "C:\\Users\\oscar\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\oscar\\lazer\\obj\\",
+        "outputPath": "C:\\Users\\oscar\\lazer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
