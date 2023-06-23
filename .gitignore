@@ -12,8 +12,8 @@
 .vs/
 
 
-bin/
-obj/
+[Bb]in/
+[Oo]bj/
 
 # Local History for Visual Studio Code
 .history/
