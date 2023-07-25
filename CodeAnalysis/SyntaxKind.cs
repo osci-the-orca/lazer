@@ -1,17 +1,20 @@
 namespace Lazer.CodeAnalysis;
 public enum SyntaxKind
 {
-    NumberToken,
+    //Tokens
+    EndOfFileToken,
+    BadToken,
     WhiteSpaceToken,
+    NumberToken,
     PlusToken,
     MinusToken,
     AstericsToken,
     ForwardSlashToken,
     OpenParenthesisToken,
     CloseParenthesisToken,
-    BadToken,
-    EndOfFileToken,
-    NumberExpression,
+
+    //Expressions
+    LiteralExpression,
     BinaryExpression,
     ParenthesizedExpression,
 }
