@@ -2,7 +2,7 @@ using System.ComponentModel;
 using Lazer;
 
 namespace Lazer.CodeAnalysis;
-public class Evaluator
+public sealed class Evaluator
 {
     private readonly ExpressionSyntax _root;
     public Evaluator(ExpressionSyntax root)

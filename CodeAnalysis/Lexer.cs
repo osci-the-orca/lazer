@@ -1,5 +1,5 @@
 namespace Lazer.CodeAnalysis;
-public class Lexer
+internal class Lexer
 {
     private readonly string _text;
 

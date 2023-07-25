@@ -1,5 +1,5 @@
 namespace Lazer.CodeAnalysis;
-sealed class NumberExpressionSyntax : ExpressionSyntax
+public sealed class NumberExpressionSyntax : ExpressionSyntax
 {
     public override SyntaxKind Kind => SyntaxKind.NumberExpression;
     public SyntaxToken NumberToken { get; }

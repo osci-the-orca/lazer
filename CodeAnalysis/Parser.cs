@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace Lazer.CodeAnalysis;
 
 
-public class Parser
+internal sealed class Parser
 {
     private readonly SyntaxToken[] _tokens;
     private int _position;

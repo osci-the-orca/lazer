@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Lazer.CodeAnalysis;
 
-bool showTree = false;
+var showTree = false;
 
 while (true)
 {
@@ -32,7 +32,7 @@ while (true)
         var color = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.DarkGray;
         PrettyPrint(syntaxTree.Root);
-        Console.ForegroundColor = color;
+        Console.ResetColor();
     }
 
     if (!syntaxTree.Diagnostics.Any())
@@ -51,7 +51,7 @@ while (true)
             Console.WriteLine(diagnostic);
         }
 
-        Console.ForegroundColor = color;
+        Console.ResetColor();
     }
 }
 
