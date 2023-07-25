@@ -2,7 +2,7 @@ using System.ComponentModel;
 using Lazer;
 
 namespace Lazer.CodeAnalysis;
-public class Evaluator
+public sealed class Evaluator
 {
     private readonly ExpressionSyntax _root;
     public Evaluator(ExpressionSyntax root)
@@ -17,9 +17,9 @@ public class Evaluator
 
     private int EvaluateExpression(ExpressionSyntax node)
     {
-        if (node is NumberExpressionSyntax n && n.NumberToken.Value is not null)
+        if (node is LiteralExpressionSyntax n && n.LiteralToken.Value is not null)
         {
-            return (int)n.NumberToken.Value;
+            return (int)n.LiteralToken.Value;
         }
         if (node is BinaryExpressionSyntax b)
         {

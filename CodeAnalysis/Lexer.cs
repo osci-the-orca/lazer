@@ -1,5 +1,5 @@
 namespace Lazer.CodeAnalysis;
-public class Lexer
+internal class Lexer
 {
     private readonly string _text;
 
@@ -29,7 +29,7 @@ public class Lexer
         _position++;
     }
 
-    public SyntaxToken NextToken()
+    public SyntaxToken Lex()
     {
 
         if (_position >= _text.Length)
@@ -70,29 +70,20 @@ public class Lexer
             return new SyntaxToken(SyntaxKind.WhiteSpaceToken, start, text, value);
         }
 
-        if (Current == '+')
+        switch (Current)
         {
-            return new SyntaxToken(SyntaxKind.PlusToken, _position++, "+", null);
-        }
-        else if (Current == '-')
-        {
-            return new SyntaxToken(SyntaxKind.MinusToken, _position++, "-", null);
-        }
-        else if (Current == '*')
-        {
-            return new SyntaxToken(SyntaxKind.AstericsToken, _position++, "*", null);
-        }
-        else if (Current == '/')
-        {
-            return new SyntaxToken(SyntaxKind.ForwardSlashToken, _position++, "/", null);
-        }
-        else if (Current == '(')
-        {
-            return new SyntaxToken(SyntaxKind.OpenParenthesisToken, _position++, "(", null);
-        }
-        else if (Current == ')')
-        {
-            return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
+            case '+':
+                return new SyntaxToken(SyntaxKind.PlusToken, _position++, "+", null);
+            case '-':
+                return new SyntaxToken(SyntaxKind.MinusToken, _position++, "-", null);
+            case '*':
+                return new SyntaxToken(SyntaxKind.AstericsToken, _position++, "*", null);
+            case '/':
+                return new SyntaxToken(SyntaxKind.ForwardSlashToken, _position++, "/", null);
+            case '(':
+                return new SyntaxToken(SyntaxKind.OpenParenthesisToken, _position++, "(", null);
+            case ')':
+                return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
         }
 
         _diagnostics.Add($"ERROR: bad character input: {Current}");

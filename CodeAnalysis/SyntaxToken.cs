@@ -1,7 +1,7 @@
 using System.Collections;
 
 namespace Lazer.CodeAnalysis;
-public class SyntaxToken : SyntaxNode
+public sealed class SyntaxToken : SyntaxNode
 {
     public int Position { get; }
     public string? Text { get; }

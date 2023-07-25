@@ -1,5 +1,5 @@
 namespace Lazer.CodeAnalysis;
-sealed class BinaryExpressionSyntax : ExpressionSyntax
+public sealed class BinaryExpressionSyntax : ExpressionSyntax
 {
     public ExpressionSyntax Left { get; }
     public SyntaxToken OperatorToken { get; }
