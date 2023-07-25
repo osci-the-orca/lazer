@@ -66,40 +66,46 @@ internal sealed class Parser
     }
     public SyntaxTree Parse()
     {
-        var expression = ParseTerm();
+        var expression = ParseExpression();
         var endOfFileToken = MatchToken(SyntaxKind.EndOfFileToken);
         return new SyntaxTree(_diagnostics, expression, endOfFileToken);
     }
-    private ExpressionSyntax ParseExpression()
-    {
-        return ParseTerm();
-    }
 
-    private ExpressionSyntax ParseTerm()
-    {
-        var left = ParseFactor();
-
-        while (Current.Kind == SyntaxKind.PlusToken || Current.Kind == SyntaxKind.MinusToken)
-        {
-            var operatorToken = NextToken();
-            var right = ParseFactor();
-            left = new BinaryExpressionSyntax(left, operatorToken, right);
-        }
-        return left;
-    }
-
-    private ExpressionSyntax ParseFactor()
+    private ExpressionSyntax ParseExpression(int parentPrecedence = 0)
     {
         var left = ParsePrimaryExpression();
 
-        while (Current.Kind == SyntaxKind.AstericsToken ||
-                Current.Kind == SyntaxKind.ForwardSlashToken)
+        while (true)
         {
+            var precedence = GetBinaryOperatorPrecedence(Current.Kind);
+            if (precedence == 0 || precedence <= parentPrecedence)
+            {
+                break;
+            }
+
             var operatorToken = NextToken();
-            var right = ParsePrimaryExpression();
+            var right = ParseExpression(precedence);
             left = new BinaryExpressionSyntax(left, operatorToken, right);
         }
+
         return left;
+    }
+
+    private static int GetBinaryOperatorPrecedence(SyntaxKind kind)
+    {
+        switch (kind)
+        {
+            case SyntaxKind.AstericsToken:
+            case SyntaxKind.ForwardSlashToken:
+                return 2;
+
+            case SyntaxKind.PlusToken:
+            case SyntaxKind.MinusToken:
+                return 1;
+
+            default:
+                return 0;
+        };
     }
 
     private ExpressionSyntax ParsePrimaryExpression()
